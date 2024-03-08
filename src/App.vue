@@ -9,7 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
 
 #primary-router{
-  height: 99vh;
+  height: 100vh;
   overflow-y: auto;
 }
 

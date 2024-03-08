@@ -24,3 +24,13 @@ body{
   font-style: normal;
 
 }
+
+
+.modal-enter-active,
+.modal-leave-active{
+  transition: all 0.15s ease;
+}
+.modal-enter-from,
+.modal-leave-to{
+  opacity: 0.5;
+}
