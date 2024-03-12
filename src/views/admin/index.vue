@@ -12,6 +12,7 @@
          <Headerbar @ToogleSideBar="ToogleSideBarWithMenuHamburger"/>            
         </div>
         <div class="main-frame">
+            <RouterView/>
         </div>
     </div>
   </div>
@@ -19,6 +20,7 @@
 
 <script setup>
 import {reactive,ref} from 'vue'
+import { RouterView } from 'vue-router';
 import Sidebar from '../../components/globales/Sidebar.vue'
 import Headerbar from '@/components/globales/Headerbar.vue';
 import svgicon from '../../components/icons/svgicon.vue'
@@ -101,7 +103,11 @@ const ToogleSideBarWithMenuHamburger=()=>{
 
     .main-frame{
         flex: 4;
-        background-color: yellow;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        --tw-bg-opacity: 1;
+        background-color: rgb(248 250 252 / var(--tw-bg-opacity));
     }
 
     .arrow-tooglles
