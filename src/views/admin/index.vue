@@ -105,7 +105,8 @@ const ToogleSideBarWithMenuHamburger=()=>{
         flex: 4;
         overflow-y: auto;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         --tw-bg-opacity: 1;
         background-color: rgb(248 250 252 / var(--tw-bg-opacity));
     }

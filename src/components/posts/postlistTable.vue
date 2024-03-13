@@ -54,7 +54,7 @@ const fetchPost = async () => {
       element.visits = element.price;
       element.progress = Math.floor(Math.random() * 101);
       element.status = ChooseRamdomStatus();
-      element.launch_date = moment(element.createAt).format("dddd DD MM YYYY");
+      element.launch_date = moment(element.createAt).format('ll');
     });
 
     Posts.value = data.data;
@@ -104,22 +104,24 @@ const items=ref( [
       </thead>
       <tbody>
         <tr v-for="item in Posts" :key="item.id">
-          <td >
-            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" style="height: 20px;width: 20px;border-radius: 50%;">
+          <td style="display: flex; gap: 10px;">
+            <div>
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="" style="height: 20px;width: 20px;border-radius: 50%;">
+            </div>
             <div class="post-title" style="">
-                <span v-if="item.title.length < 20">{{ item.title }}</span>
-                <span v-else>{{ item.title.slice(0, 15) }}...</span>
+                <span v-if="item.title.length < 40">{{ item.title }}</span>
+                <span v-else>{{ item.title.slice(0, 40) }}...</span>
              </div>
           </td>
           <td>
             <div class="details-values">
-              <span :class="CheckSatatusColor(item.status)">
+              <span :class="CheckSatatusColor(item.status)" style="    padding: 2px 9px;border: 1px solid #e4e4e7; border-radius: 20px;">
                 {{ item.status }}
               </span>
             </div>         
          </td>
           <td>
-            <div class="details-values">
+            <div class="details-values" >
               {{ item.visits }}
             </div>
         </td>
@@ -128,23 +130,25 @@ const items=ref( [
               {{ item.launch_date }}
             </div>
         </td>
+
         <td>
             <div class="progress-bar" >
                 <div
+                style="background-color: #2dd4bf;"
                   class="progress"
                   :style="{ width: `${item.progress}%` } "
                   :class="CheckSatatusColor(item.status)"
                 ></div>
+                <div style="visibility:hidden; ">
+                {{ item.title.slice(0, 25) }}
               </div>
-              {{ item.progress }}%
+              </div>
+             
         </td>
+       
         </tr>
       </tbody>
     </table>
-       
-      <!-- <div class="post" style="" v-for="item in Posts" :key="item.id">
-        {{ item.status }}
-      </div> -->
     </div>
   </div>
 </template>
@@ -209,63 +213,23 @@ const items=ref( [
 }
 
 .post-list {
+  margin: 30px 0px;
   flex: 3;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 10px;
   width: 100%;
   overflow-y: auto;
-}
-.post {
-  /* background-color:white;  */
-  padding: 10px;
-  border-radius: 4px;
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
-    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
-    calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
-    var(--tw-shadow, 0 0 #0000);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
-    var(--tw-shadow, 0 0 #0000);
-  border-radius: 0.75rem;
   border: 0 solid #e5e7eb;
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.post-header {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  margin-bottom: 10px;
+  border-radius: 0.75rem;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.post-title {
-  display: flex;
-  font-size: clamp(13px, 1.3vw, 17px);
-}
-.post-details {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-}
-.post-details div {
-  display: flex;
-  margin: 2px;
-  align-items: center;
-}
 
-.detail-properties {
-  flex: 2;
-}
 
-.details-values {
-  flex: 4;
-}
 
 .color-danger {
   color: #dc3545;
@@ -282,7 +246,6 @@ const items=ref( [
 }
 .progress {
   height: 100%;
-  /* background-color: rgb(202, 40, 181); */
   border-radius: 4px;
   margin: 0;
   padding: 0;
@@ -296,19 +259,6 @@ const items=ref( [
 }
 /* --------------------------------------------------------------------------------- */
 
-.tools {
-  /* background-color: red;  */
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  align-items: center;
-}
-
-.btn-tools {
-  flex: 2;
-  display: flex;
-  gap: 2px;
-}
 
 .btn-tools span {
   flex: 2;
@@ -351,13 +301,21 @@ const items=ref( [
     table {
       width: 100%;
       border-collapse: collapse;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity));
     }
     
     th, td {
-      padding: 8px;
+      padding: 15px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
      
+    }
+    tr{
+      border-bottom: 1px solid  rgb(255 255 255 / var( --tw-ring-shadow));
+            align-items: center;
+            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+
     }
     
     th {
@@ -366,6 +324,8 @@ const items=ref( [
     }
     
     tr:hover {
-      background-color: #f5f5f5;
+      background-color: #f1f5f9;
+      transition: 1.2s ease-out al;
+      cursor: pointer;
     }
   </style>
