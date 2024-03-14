@@ -212,6 +212,7 @@ const CheckSatatusColor = (status) => {
 
 .post-list {
   flex: 3;
+  margin: 30px 0px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 10px;

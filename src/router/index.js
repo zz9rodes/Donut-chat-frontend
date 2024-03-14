@@ -7,6 +7,7 @@ import OtpPage from './../views/OtpPage.vue'
 // import admin Router
 import adminPage from '../views/admin/index.vue'
 import ListpostPage from '../views/admin/postViews/ListAll.vue'
+import postDetailsPage from '../views/admin/postViews/postdetails.vue'
 
 
 
@@ -44,6 +45,10 @@ const router = createRouter({
         {
           path:'post/post-list',
           component:ListpostPage
+        },
+        {
+          path:'/post/:post-id',
+          component:postDetailsPage
         }
       ]
     }

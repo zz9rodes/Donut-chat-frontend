@@ -90,8 +90,8 @@ const items=ref( [
 
 <template>
   <div>
-        <div class="post-list">
-        <table>
+        <div class="post-list" >
+        <table >
       <thead>
         <tr>
           <th>Title</th>
@@ -102,7 +102,7 @@ const items=ref( [
 
         </tr>
       </thead>
-      <tbody>
+      <tbody style="height:  400px; overflow-y: auto;">
         <tr v-for="item in Posts" :key="item.id">
           <td style="display: flex; gap: 10px;">
             <div>
@@ -324,7 +324,7 @@ const items=ref( [
     }
     
     tr:hover {
-      background-color: #f1f5f9;
+      background-color: #f1f5f991;
       transition: 1.2s ease-out al;
       cursor: pointer;
     }

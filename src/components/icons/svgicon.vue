@@ -22,6 +22,9 @@ const props=defineProps({
 
 </script>
 
-<style>
-
+<style scoped>
+    .svg-icon{
+        display: flex;
+        /* background: red; */
+    }
 </style>
